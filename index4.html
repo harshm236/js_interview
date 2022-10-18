@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            background-color: yellow ;
+        }
+        table,th,td{
+            border: 1px solid;
+        }
+    </style>
+  </head>
+  <body>
+    <pre style="font-size: 25px">
+                                      JS interview questions
+
+    1.Difference between “ == “ and “ === “ operators.
+
+    Ans - The equality operator in javascript is used to compare if two values are equal. The 
+    comparison is made by == and === operators in javascript. The main difference between the
+     == and === operator in javascript is that the == operator does the type conversion of the
+    operands before comparison, whereas the === operator compares the values as well as the
+    data types of the operands.
+<hr>
+    2.What is the spread operator?
+
+    Ans- Spread syntax (...) allows an iterable, such as an array or string, to be expanded in 
+    places where zero or more arguments (for function calls) or elements (for array literals) 
+    are expected. In an object literal, the spread syntax enumerates the properties of an object
+     and adds the key-value pairs to the object being created.
+<hr>
+    3.What are the differences between var, let and const?
+
+     Ans- <table style="margin-left:-5px ;">
+          <tr>
+            <th>xxx</th>
+            <th>var</th>
+            <th>let</th>
+            <th>const</th>
+          </tr>
+          <tr>
+              <th>SCOPE</th>
+              <td><pre>Variables declared with 
+var are in the function 
+scope.</pre></td>
+<td><pre>Variables declared as let
+    are in the block scope.</pre></td>
+    <td><pre>Variables declared as const
+ are in the block scope.</pre></td>
+            </tr>
+            <tr>
+                <th>Hoisting</th>
+                <td>Allowed</td>
+                <td>Not allowed	</td>
+                <td>Not allowed	</td>
+            </tr>
+            <tr>
+                <th>Reassign the value</th>
+                <td>Allowed</td>
+                <td>Allowed</td>
+                <td>Not Allowed</td>
+            </tr>
+          </table>
+<hr>
+    4.   What is execution context
+
+    Ans-  The Execution Context contains the code that's currently running, and 
+    everything that aids in its execution. During the Execution Context run-time, 
+    the specific code gets parsed by a parser, the variables and functions are stored
+     in memory, executable byte-code gets generated, and the code gets executed.
+     <hr>
+
+     5. What is meant by first class functions
+
+     Ans- A programming language is said to have First-class functions when functions 
+     in that language are treated like any other variable. For example, in such a language,
+      a function can be passed as an argument to other functions, can be returned by 
+      another function and can be assigned as a value to a variable.
+<hr>
+    6. What are closures? Give an example of closure
+
+    Ans- A closure is the combination of a function bundled together (enclosed) with 
+    references to its surrounding state (the lexical environment). In other words, a
+     closure gives you access to an outer function's scope from an inner function. In 
+     JavaScript, closures are created every time a function is created, at function creation time.
+
+     example- 
+
+     function makeFunc() {
+        const name = 'Mozilla';
+        function displayName() {
+          console.log(name);
+        }
+        return displayName;
+      }
+      
+      const myFunc = makeFunc();
+      myFunc();
+     <hr>
+    7.Explain call(), apply() and, bind() methods. Give an example of call(), apply(), bind()
+
+    Ans- <strong>call:</strong> binds the this value, invokes the function, and allows you to pass a list of 
+         arguments.
+
+         function test(arg1, arg2){
+            console.log(this.num, arg1, arg2); // 100, 10, 20
+          }
+          
+          test.call({num: 100}, 10, 20);
+
+         <strong>apply:</strong> binds the this value, invokes the function, and allows you to pass arguments as an
+          array.
+
+          function test(...arguments){
+            console.log(this.num, arguments);//100, [1,2,3]
+          }
+          
+          test.apply({num: 100}, [1,2,3]); 
+
+        <strong>bind:</strong> binds the this value, returns a new function, and allows you to pass in a list 
+         of arguments.
+
+         function test(arg){
+            console.log(this.number, arg);
+           }
+           
+           let bindedFn = test.bind({number: 99}, "argument");
+           
+           bindedFn(); // 99, "argument"
+           <hr>
+    8. What is creation phase and execution phase?
+
+    Ans- 
+<b>The creation phase</b>
+
+    When the JavaScript engine executes a script for the first time, it creates the global execution 
+    context. During this phase, the JavaScript engine performs the following tasks:
+    <ul> <li>Create the global object i.e., window in the web browser or global in Node.js.</li>
+        <li>Create the this object and bind it to the global object.</li> 
+       <li>Setup a memory heap for storing variables and function references.</li>
+       <li>Store the function declarations in the memory heap and variables within the global execution 
+context with the</li>
+        <li>initial values as undefined.</li>
+    </ul>
+<b>The execution phase</b>
+
+   During the execution phase, the JavaScript engine executes the code line by line, assigns the values
+   to variables, and executes the function calls.
+   For each function call, the JavaScript engine creates a new function execution context.
+
+   The function execution context is similar to the global execution context. But instead of creating 
+   the global 
+   object, the JavaScript engine creates the arguments object that is a reference to all the parameters 
+   of the function
+   <hr>
+   9. What are objects in javascript?
+
+   Ans-  Objects, in JavaScript, is the most important data-type and forms the building blocks for 
+   modern JavaScript. These objects are quite different from JavaScript’s primitive data-types(Number,
+    String, Boolean, null, undefined and symbol) in the sense that while these primitive data-types 
+    all store a single value each (depending on their types).
+    <hr>
+   10.What are function constructors?
+   
+   Ans- A constructor is a function that creates an instance of a class which is typically called an
+    “object”. In JavaScript, a constructor gets called when you declare an object using the new keyword.
+
+   The purpose of a constructor is to create an object and set values if there are any object properties 
+   present. It’s a neat way to create an object because you do not need to explicitly state what to 
+   return as the constructor function, by default, returns the object that gets created within it.
+   <hr>
+   11. Explain prototypes
+
+   Ans- Every object in JavaScript has a built-in property, which is called its prototype. The prototype
+    is itself an object, so the prototype will have its own prototype, making what's called a prototype
+     chain. The chain ends when we reach a prototype that has null for its own prototype.
+<hr>
+   12. What is prototype chain
+
+   Ans- Prototypes are the means of inheritance in JavaScript. The prototype of an object would also have
+        a prototype object. This continues until we reach the top level when there is no prototype object.
+        This is called prototype chaining or prototype chain in JavaScript.
+    <hr>
+   13. Give an example of inheritance using function constructor
+
+   Ans- Constructor functions define the prototype of the properties an object will contain. Using the
+    constructor function, we can create a new object after passing the required parameters.
+
+   Inheriting a previously defined constructor function means using the parameters of the previously 
+   defined function along with adding some new parameters to the newly defined constructor function. For this, 
+   we need to use the call() function which allows us to call a function defined somewhere else in the current 
+   context. 
+   <hr>
+   14. What are callbacks?
+
+   Ans- A callback is a function passed as an argument to another function
+This technique allows a function to call another function
+   A callback function can run after another function has finished
+   <b>example</b>
+   fucntion func1(name){
+    console.log(name)
+   }
+   function func2(callback){
+    let x = 'harsh'
+    callback(x)
+   }
+   func2(func1)
+   <hr>
+   15.What is the use of setTimeout
+
+   Ans-sets a timer which executes a function or specified piece of code once 
+   the timer expires
+   <b>example</b>
+   setTimeout(()=>{console.log('harsh')},2000) //it will be executed after 2000
+    miliseconds 
+   <hr>
+   16. What is an event loop and call stack
+
+   Ans- The event loop is a constantly running process that monitors both the 
+   callback queue and the call stack. If the call stack is not empty, the event 
+   loop waits until it is empty and places the next function from the callback 
+   queue to the call stack.
+   <hr>
+   17. What are arrow functions?
+
+   Ans- declaration of a fucntion. In this the "this" keyword attains the value
+    of the object under which the arrow fucntion is defined.
+    <b>
+        function func = () =>{
+            console.log('harsh')
+        }
+    </b>
+    <hr>
+    18. What is a Temporal Dead Zone?
+
+    Ans- The let and const variables are not accessible before they are initialized
+     with some value, and the phase between the starting of the execution of block 
+     in which the let or const variable is declared till that variable is being 
+     initialized is called Temporal Dead Zone for the variable
+     <hr>
+     19.What is hoisting?
+
+     Ans- Hoisting is a concept which enables us to extract values of variables and 
+     functions even before initialising/assigning value without getting error and this
+      is happening due to the 1st phase (memory creation phase) of the Execution Context.
+
+     In JavaScript, Hoisting is the default behavior of moving all the declarations at 
+     the top of the scope before code execution. Basically, it gives us an advantage 
+     that no matter where functions and variables are declared, they are moved to the
+      top of their scope regardless of whether their scope is global or local. 
+     
+     It allows us to call functions before even writing them in our code. 
+     
+     Note: JavaScript only hoists declarations, not the initializations
+     <hr>
+     20.What is the DOM?
+
+     Ans- The DOM defines a standard for accessing documents: "The W3C Document Object Model
+      (DOM) is a platform and language-neutral interface that allows programs and scripts to
+       dynamically access and update the content, structure, and style of a document."
+       <b>example- let a = document.getElementById('h') </b>// html element defined with id "h" 
+       will be captured in "a" by using document.getElementById('h'), a DOM statement.
+       <hr>
+     21. Difference between undefined vs not defined vs NaN
+
+     Ans- In JavaScript, they both are related to memory space and there is a very simple 
+     difference between them. If the variable name which is being accessed doesn't exist 
+     in memory space then it would be not defined, and if exists in memory space but hasn't
+      been assigned any value till now, then it would be undefined.
+      NaN (Not a Number) is a numeric data type that means an undefined value or value that 
+      cannot be represented, especially results of floating-point calculations
+      <hr>
+     22. How many operators do we have in JS ?
+    
+     Ans- There are different types of operators in JavaScript that are used for performing 
+     different operations. Some of the JavaScript Operators include:
+
+     Arithmetic Operators
+     Comparison Operators
+     Bitwise Operators
+     Logical Operators
+     Assignment Operators
+     <hr>
+     23.What are pure functions?
+
+     Ans- A Pure Function is a function (a block of code) that always returns the same result if the
+      same arguments are passed. It does not depend on any state or data change during a program’s 
+      execution. Rather, it only depends on its input arguments.
+
+     Also a pure function does not produce any observable side effects such as network requests or
+      data mutation etc.
+     
+     example
+     
+     function calculateGST( productPrice ) {
+         return productPrice * 0.05;
+     }
+     <hr>
+     24.What is callback hell?
+
+     Ans- Callback Hell: Callback Hell is essentially nested callbacks stacked below one another forming
+      a pyramid structure. Every callback depends/waits for the previous callback, thereby making a 
+      pyramid structure that affects the readability and maintainability of the code.
+      <hr>
+     25.What are promises and why do we need them?
+
+     Ans- Prior to promises events and callback functions were used but they had limited functionalities 
+     and created unmanageable code. 
+     Multiple callback functions would create callback hell that leads to unmanageable code. Also it is
+      not easy for any user to handle multiple callbacks at the same time.
+     Events were not good at handling asynchronous operations.
+     
+     Promises are the ideal choice for handling asynchronous operations in the simplest manner. They can 
+     handle multiple asynchronous operations easily and provide better error handling than callbacks and 
+     events. In other words also, we may say that, promises are the ideal choice for handling multiple 
+     callbacks at the same time, thus avoiding the undesired callback hell situation. Promises do provide
+      a better chance to a user to read the code in a more effective and efficient manner especially it 
+      that particular code is used for implementing multiple asynchronous operations. 
+      <hr>
+     26.What is promise chaining
+
+     Ans- Promise chaining is a syntax that allows you to chain together multiple asynchronous tasks in a 
+     specific order. This is great for complex code where one asynchronous task needs to be performed after
+      the completion of a different asynchronous task.
+
+      <b>example</b>
+      const add = (a, b) => {     
+        return new Promise((resolve, reject) => {        
+            setTimeout(() => {            
+                if (a < 0 || b < 0) {                 
+                    return reject('Numbers must be non-negative')
+                } 
+                resolve(a + b)         
+            }, 2000) 
+        })
+    }
+      
+    add(1, 2).then((sum) => {     
+        console.log(sum)  // Print 3   
+        return add(sum, 4)
+    }).then((sum2) => {     
+        console.log(sum2) // Print 7 
+    }).catch((e) => { 
+        console.log(e) 
+    });
+    <hr>
+    27. Give an example of async/await
+
+     Ans- // a promise
+     let promise = new Promise(function (resolve, reject) {
+         setTimeout(function () {
+         resolve('Promise resolved')}, 4000); 
+     });
+     
+     // async function
+     async function asyncFunc() {
+     
+         // wait until the promise resolves 
+         let result = await promise; 
+     
+         console.log(result);
+         console.log('hello');
+     }
+     
+     // calling the async function
+     asyncFunc();
+
+     <b>output</b>
+     Promise resolved
+     hello
+     <hr>
+    28. What is the purpose of async/await keywords?
+
+    Ans- The async keyword turns a method into an async method, which allows you to use the await keyword
+     in its body. When the await keyword is applied, it suspends the calling method and yields control back 
+     to its caller until the awaited task is complete. await can only be used inside an async method.
+     <hr>
+    29.What is the for-in loop in JavaScript? Give its syntax
+
+    Ans- In JavaScript, the for-in loop is a basic control statement that allows you to loop through
+     the properties of an object. The statements of code found within the loop body will be executed
+      once for each property of the object.
+      <b> for (key in object) { // body of for...in }</b>
+      <hr>
+    30.Explain Local Scope, Block Scope, Functional Scope and Scope Chain in javascript
+    
+    Ans- Block Scope:
+
+    Block Scope is related to the variables or functions which are declared using let and const since var 
+    does not have block scope.
+    Block Scope tells us that variables that are declared inside a block { }, can be accessed within that 
+    block only, not outside of that block.
+
+    Local or Function Scope:
+
+    Variables that are declared inside a function or a method have Local or Function Scope.
+    It means those variables or functions which are declared inside the function or a method 
+    can be accessed within that function only.
+
+    Scope chain: Whenever our code tries to access a variable during the function call, it starts the 
+    searching from local variables. And if the variable is not found, it’ll continue searching in its outer 
+    scope or parent functions’ scope until it reaches the global scope and completes searching for the 
+    variable there. Searching for any variable happens along the scope chain or in different scopes until 
+    we get the variable. If the variable is not found in the global scope as well, a reference error is 
+    thrown
+    <hr>
+    31.What is difference between null and undefined and where to use what?
+
+    Ans- Null: It is the intentional absence of the value. It is one of the primitive values of JavaScript.
+     Undefined: It means the value does not exist in the compiler. It is the global object.
+     <hr>
+    32.what is Symbol?
+
+    Ans- Symbol is a built-in object whose constructor returns a symbol primitive — also called a Symbol value 
+    or just a Symbol — that's guaranteed to be unique
+    <hr>
+    33.Write code to explain map and filter in arrays
+
+    Ans- map() method: It applies a given function on all the elements of the array and returns the updated array.
+     It is the simpler and shorter code instead of a loop. The map is similar to the following code:
+
+     function triple(n){
+        return n*3;
+    }	
+    arr = new Array(1, 2, 3, 6, 5, 4);
+    
+    var new_arr = arr.map(triple)
+    console.log(new_arr);
+    
+    filter() method: It filters the elements of the array that return false for the applied condition and returns 
+    the array which contains elements that satisfy the applied condition.
+
+    arr = new Array(1, 2, 3, 6, 5, 4);
+    var new_arr = arr.filter(function (x){
+	return x % 2==0;
+});
+
+console.log(new_arr)
+<hr>
+   34. Explain passed by value and passed by reference
+
+   Ans- In Pass by value, parameters passed as an arguments create its own copy. So any changes made inside the
+    function is made to the copied value not to the original value
+
+    In Pass by reference, parameters passed as an arguments does not create its own copy, it refers to the original
+     value so changes made inside function affect the original value. 
+
+    
+    <hr>
+   35. Please explain Self Invoking Function and its code
+
+   Ans- A self-invoking (also called self-executing) function is a nameless (anonymous) function that is invoked
+    immediately after its definition.
+    An anonymous function is enclosed inside a set of parentheses followed by another set of parentheses (), which
+     does the execution
+     Self-invoking functions are useful for initialization tasks and for one-time code executions, without the need
+      of creating global variables.
+      example
+
+      (function(x){
+        console.log(x);
+    })("Hello, World!");
+    <hr>
+    
+   
+
+
+
+    
+    </pre>
+    </body>
+</html>
